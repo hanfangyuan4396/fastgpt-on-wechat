@@ -158,7 +158,7 @@ pip install -r requirements.txt
 
 欢迎加入小x宝开源社区！
 
-- 🌟 小x宝开源社区：[https://github.com/pancrePal-xiaoyibao](https://github.com/pancrePal-xiaoyibao)
+- 🌟 [小x宝开源社区](https://github.com/pancrePal-xiaoyibao/pancrePal-xiaoyibao)
 - 💡 小X宝社区：专注于AI在癌症患者公益助手方面应用开发和创新，应用AI技术提供公益服务，帮助癌症患者家属减少信息差，获得科学循证治疗和更好的依从效果。
 - 🤝 社区特色：
   - 活跃的开发者社区
@@ -237,7 +237,7 @@ pip install -r requirements.txt
 - [cow](https://github.com/zhayujie/chatgpt-on-wechat) - 基础微信项目框架
 - [dow](https://github.com/hanfangyuan4396/dify-on-wechat) - Dify对接实现
 - [FastGPT](https://github.com/labring/FastGPT) - 强大的FastGPT平台
-- [小胰宝/小x宝社区](https://github.com/pancrePal-xiaoyibao) - 公益服务多癌种的AI患者助手社区
+- [小胰宝/小x宝社区](https://github.com/pancrePal-xiaoyibao/pancrePal-xiaoyibao) - 公益服务多癌种的AI患者助手社区
 
 持续的支持和反馈
 
