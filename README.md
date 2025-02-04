@@ -2,6 +2,8 @@
 
 本项目是 [dify-on-wechat](https://github.com/hanfangyuan4396/dify-on-wechat) 的下游项目，专门适配了 [FastGPT](https://github.com/labring/FastGPT) 平台，让您可以轻松地将FastGPT接入到微信生态中。
 
+本项目专注于把FastGPT对接到微信生态中，贡献给 [小x宝](https://github.com/pancrePal-xiaoyibao/pancrePal-xiaoyibao) 公益项目使用
+
 ## 项目特点
 
 - 🚀 完全兼容dify-on-wechat的所有功能
