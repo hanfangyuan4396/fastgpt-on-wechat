@@ -1,0 +1,39 @@
+{
+  "appdata_dir": "appdata",                    // 应用数据目录
+  "channel_type": "gewechat",                  // 渠道类型，使用gewechat
+  "fastgpt_api_base": "",                      // FastGPT API基础URL
+  "fastgpt_api_key": "",                       // FastGPT API密钥
+  "gewechat_app_id": "",                       // gewechat的ID
+  "gewechat_base_url": "",                     // gewechat的API基础URL
+  "gewechat_callback_url": "",                 // gewechat的URL
+  "gewechat_download_url": "",                 // gewechat的URL
+  "gewechat_token": "",                        // gewechat的Token
+  "group_chat_prefix": [                       // 群聊触发前缀
+    "xyb,@bot"
+  ],
+  "group_name_white_list": [                   // 群聊白名单, 可以修改为指定群
+    "ALL_GROUP"
+  ],
+  "image_recognition": true,                   // 是否启用图片识别
+  "image_max_size": 10485760,                 // 图片大小限制（字节）
+  "model": "fastgpt",                         // 使用的模型，设置为fastgpt
+  "open_ai_api_base": "https://{{fastgpt应用}}/api/v1",  //测试对比用途
+  "open_ai_api_key": “”, //测试对比用途
+  "oss_access_key": "",                       // OSS访问密钥
+  "oss_base_url": "",                         // OSS基础URL
+  "oss_bucket_name": "",                      // OSS存储桶名称
+  "oss_secret_key": "",                       // OSS密钥
+  "single_chat_prefix": [                     // 私聊触发前缀
+    ""
+  ],
+  "single_chat_reply_prefix": "",             // 私聊回复前缀
+  "speech_recognition": true,                 // 是否启用语音识别
+  "text_to_voice": "",                       // 文字转语音服务
+  "use_fastgpt": true,                       // 是否使用FastGPT
+  "voice_reply_voice": true,                 // 是否启用语音回复
+  "voice_to_text": "",                       // 语音转文字服务
+  "web_ui_password": "",                     // Web界面密码
+  "web_ui_port": 7860,                      // Web界面端口
+  "web_ui_username": "",                     // Web界面用户名
+  "debug": true
+}
