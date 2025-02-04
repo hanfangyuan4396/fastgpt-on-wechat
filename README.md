@@ -237,7 +237,9 @@ pip install -r requirements.txt
 - [cow](https://github.com/zhayujie/chatgpt-on-wechat) - 基础微信项目框架
 - [dow](https://github.com/hanfangyuan4396/dify-on-wechat) - Dify对接实现
 - [FastGPT](https://github.com/labring/FastGPT) - 强大的FastGPT平台
-- 小胰宝/小x宝社区 - 持续的支持和反馈
+- [小胰宝/小x宝社区](https://github.com/pancrePal-xiaoyibao) - 公益服务多癌种的AI患者助手社区
+
+持续的支持和反馈
 
 ## 免责声明
 
