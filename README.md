@@ -70,6 +70,53 @@
 
 更多配置说明请参考 [Dify-on-wechat配置文档](./Dify-on-wechat-README.md)。
 
+## 启动前重要提示
+
+### 1. 部署gewechat服务
+
+首先需要部署gewechat服务，具体步骤如下：
+
+```bash
+# 从阿里云镜像仓库拉取(国内)
+docker pull registry.cn-chengdu.aliyuncs.com/tu1h/wechotd:alpine
+docker tag registry.cn-chengdu.aliyuncs.com/tu1h/wechotd:alpine gewe
+
+# 创建数据目录并启动服务
+mkdir -p gewechat/data  
+docker run -itd -v ./gewechat/data:/root/temp -p 2531:2531 -p 2532:2532 --restart=always --name=gewe gewe
+```
+
+### 2. 关闭代理服务
+
+在启动服务之前，请确保关闭所有代理服务（VPN、梯子等），否则可能会导致连接错误。如果开启VPN会导致服务无法正常工作。
+
+### 3. 地理位置要求
+
+gewechat服务对地理位置有严格要求：
+- gewechat服务器必须与扫码登录的微信在同一省份
+- 建议将服务部署在本地电脑或同省的服务器上
+- 如果服务器与微信不在同一省份，可能会导致登录失败或服务不稳定
+
+### 4. 配置说明
+
+gewechat相关配置示例：
+
+```json
+{
+    "channel_type": "gewechat",  // 通道类型设置为gewechat    
+    "gewechat_token": "",        // 首次登录可留空,自动获取
+    "gewechat_app_id": "",       // 首次登录可留空,自动获取
+    "gewechat_base_url": "http://本机ip:2531/v2/api",  // gewechat服务API地址
+    "gewechat_callback_url": "http://本机ip:9919/v2/api/callback/collect", // 回调地址
+    "gewechat_download_url": "http://本机ip:2532/download" // 文件下载地址
+}
+```
+
+注意事项：
+- 本机ip是指**局域网ip**或**公网ip**，可通过`ipconfig`或`ifconfig`命令查看
+- gewechat_callback_url中的ip不能使用`127.0.0.1`或`localhost`
+- 如果使用docker启动服务，请确保`9919`端口已映射到宿主机
+
 ## 环境配置
 
 ### Conda环境配置
