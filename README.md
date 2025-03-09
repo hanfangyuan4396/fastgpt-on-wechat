@@ -97,6 +97,23 @@ gewechat服务对地理位置有严格要求：
 - 建议将服务部署在本地电脑或同省的服务器上
 - 如果服务器与微信不在同一省份，可能会导致登录失败或服务不稳定
 
+- docker compose.yml文件后面增加extra_hosts, 在mac/windows电脑上会出现callback的问题
+```
+version: '3'
+services:
+  gewechat:
+    image: gewe
+    container_name: gewe
+    volumes:
+      - ./gewechat/data:/root/temp
+    ports:
+      - "2531:2531"
+      - "2532:2532"
+    restart: always
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+```
+
 ### 4. 配置说明
 
 gewechat相关配置示例：
@@ -108,14 +125,38 @@ gewechat相关配置示例：
     "gewechat_app_id": "",       // 首次登录可留空,自动获取
     "gewechat_base_url": "http://本机ip:2531/v2/api",  // gewechat服务API地址
     "gewechat_callback_url": "http://本机ip:9919/v2/api/callback/collect", // 回调地址
-    "gewechat_download_url": "http://本机ip:2532/download" // 文件下载地址
+    "gewechat_download_url": "http://本机ip:2532/download" // 文件下载地址 
 }
+```
+mac本机配置
+```
+    "gewechat_app_id": "wx_xx",
+    "gewechat_base_url": "http://192.168.1.159:2531/v2/api",
+    "gewechat_callback_url": "http://host.docker.internal:9919/v2/api/callback/collect",
+    "gewechat_download_url": "http://192.168.1.159:2532/download",
 ```
 
 注意事项：
 - 本机ip是指**局域网ip**或**公网ip**，可通过`ipconfig`或`ifconfig`命令查看
 - gewechat_callback_url中的ip不能使用`127.0.0.1`或`localhost`
 - 如果使用docker启动服务，请确保`9919`端口已映射到宿主机
+
+对于 Mac/Windows 使用 Docker Desktop 部署的用户，base_url 请填写为 **http://host.docker.internal:2531**。并且回调地址端口不要修改。
+
+如果还不行，请通过 docker inspect gewe 查看 gewechat 容器网络的 IP 地址，然后 http://ip地址:2531。
+
+对于 Linux 使用 Docker 部署的用户，请通过 docker inspect gewe 查看 gewechat 容器网络的 IP 地址，然后 http://ip地址:2531。如果有 公网ip，也可以是公网 ip，但是需要放行 2531 端口。
+
+![image](https://astrbot.app/assets/image-1.DRlMtAyX.png)
+通用方法：
+
+填写宿主机 ip（局域网 ip或者公网地址）或者 Docker Bridge 网络网关 IP（请先在面板上更新 astrbot 到 928245cd0c50c5518c8d68358aa987ef686ef4be 这一个commit）
+对于 linux：
+
+将gewechat 的网络模式设置为 host。即在启动参数加 --network=host
+对于 Docker Desktop（Windows 和 macOS）:
+
+尝试host改成 host.docker.internal
 
 ## 环境配置
 
@@ -193,6 +234,9 @@ starlette>=0.27.0
 ```bash
 pip install -r requirements.txt
 ```
+
+
+
 
 ## Web UI 功能
 
